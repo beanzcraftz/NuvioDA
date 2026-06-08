@@ -1,10 +1,13 @@
 package com.nuvio.app.features.downloads
 
+import java.util.prefs.Preferences
+
 
 
 
 internal actual object DownloadsStorage {
-    actual fun loadPayload(): String? = null
-    actual fun savePayload(payload: String) { }
+    private val preferences = Preferences.userRoot().node("nuvio_desktop")
+    actual fun loadPayload(): String? = preferences.get("payload", null)
+    actual fun savePayload(payload: String) { preferences.put("payload", payload) }
 }
 

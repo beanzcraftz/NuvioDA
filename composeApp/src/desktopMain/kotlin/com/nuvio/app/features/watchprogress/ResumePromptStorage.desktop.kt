@@ -1,12 +1,15 @@
 package com.nuvio.app.features.watchprogress
 
+import java.util.prefs.Preferences
+
 
 
 
 internal actual object ResumePromptStorage {
-    actual fun loadWasInPlayer(): Boolean = false
-    actual fun saveWasInPlayer(value: Boolean) { }
-    actual fun loadLastPlayerVideoId(): String? = null
-    actual fun saveLastPlayerVideoId(videoId: String?) { }
+    private val preferences = Preferences.userRoot().node("nuvio_desktop")
+    actual fun loadWasInPlayer(): Boolean = preferences.getBoolean("loadWasInPlayer", false)
+    actual fun saveWasInPlayer(value: Boolean) { preferences.put("saveWasInPlayer", value.toString()) }
+    actual fun loadLastPlayerVideoId(): String? = preferences.get("loadLastPlayerVideoId", null)
+    actual fun saveLastPlayerVideoId(videoId: String?) { if (videoId != null) preferences.put("lastVideo", videoId) else preferences.remove("lastVideo") }
 }
 

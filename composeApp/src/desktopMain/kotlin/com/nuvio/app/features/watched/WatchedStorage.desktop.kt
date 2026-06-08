@@ -1,11 +1,14 @@
 package com.nuvio.app.features.watched
 
+import java.util.prefs.Preferences
+
 
 
 
 actual object WatchedStorage {
-    actual fun loadPayload(profileId: Int): String? = null
-    actual fun savePayload(profileId: Int, payload: String) { }
+    private val preferences = Preferences.userRoot().node("nuvio_desktop")
+    actual fun loadPayload(profileId: Int): String? = preferences.get("payload_$profileId", null)
+    actual fun savePayload(profileId: Int, payload: String) { preferences.put("payload_$profileId", payload) }
 }
 
 

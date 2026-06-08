@@ -1,11 +1,11 @@
 package com.nuvio.app.features.trakt
 
-
-
+import java.time.Instant
 
 internal actual object TraktPlatformClock {
-    actual fun nowEpochMs(): Long = 0
-    actual fun parseIsoDateTimeToEpochMs(value: String): Long? = null
-    actual fun availableProcessors(): Int = 0
+    actual fun nowEpochMs(): Long = System.currentTimeMillis()
+    actual fun parseIsoDateTimeToEpochMs(value: String): Long? = runCatching {
+        Instant.parse(value).toEpochMilli()
+    }.getOrNull()
+    actual fun availableProcessors(): Int = Runtime.getRuntime().availableProcessors()
 }
-

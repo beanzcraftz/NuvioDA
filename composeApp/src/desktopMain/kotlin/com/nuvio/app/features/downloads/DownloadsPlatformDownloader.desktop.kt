@@ -1,6 +1,9 @@
 package com.nuvio.app.features.downloads
 
+import java.util.prefs.Preferences
+
 internal actual object DownloadsPlatformDownloader {
+    private val preferences = Preferences.userRoot().node("nuvio_desktop")
     actual fun start(
         request: DownloadPlatformRequest,
         onProgress: (downloadedBytes: Long, totalBytes: Long?) -> Unit,

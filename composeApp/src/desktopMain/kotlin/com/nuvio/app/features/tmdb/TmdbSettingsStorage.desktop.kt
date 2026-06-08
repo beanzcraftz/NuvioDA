@@ -1,38 +1,40 @@
 package com.nuvio.app.features.tmdb
 
+import java.util.prefs.Preferences
 import kotlinx.serialization.json.JsonObject
 
 
 
 internal actual object TmdbSettingsStorage {
-    actual fun loadEnabled(): Boolean? = null
-    actual fun saveEnabled(enabled: Boolean) { }
-    actual fun loadApiKey(): String? = null
-    actual fun saveApiKey(apiKey: String) { }
-    actual fun loadLanguage(): String? = null
-    actual fun saveLanguage(language: String) { }
-    actual fun loadUseTrailers(): Boolean? = null
-    actual fun saveUseTrailers(enabled: Boolean) { }
-    actual fun loadUseArtwork(): Boolean? = null
-    actual fun saveUseArtwork(enabled: Boolean) { }
-    actual fun loadUseBasicInfo(): Boolean? = null
-    actual fun saveUseBasicInfo(enabled: Boolean) { }
-    actual fun loadUseDetails(): Boolean? = null
-    actual fun saveUseDetails(enabled: Boolean) { }
-    actual fun loadUseCredits(): Boolean? = null
-    actual fun saveUseCredits(enabled: Boolean) { }
-    actual fun loadUseProductions(): Boolean? = null
-    actual fun saveUseProductions(enabled: Boolean) { }
-    actual fun loadUseNetworks(): Boolean? = null
-    actual fun saveUseNetworks(enabled: Boolean) { }
-    actual fun loadUseEpisodes(): Boolean? = null
-    actual fun saveUseEpisodes(enabled: Boolean) { }
-    actual fun loadUseSeasonPosters(): Boolean? = null
-    actual fun saveUseSeasonPosters(enabled: Boolean) { }
-    actual fun loadUseMoreLikeThis(): Boolean? = null
-    actual fun saveUseMoreLikeThis(enabled: Boolean) { }
-    actual fun loadUseCollections(): Boolean? = null
-    actual fun saveUseCollections(enabled: Boolean) { }
+    private val preferences = Preferences.userRoot().node("nuvio_desktop")
+    actual fun loadEnabled(): Boolean? = preferences.get("loadEnabled", null)?.toBooleanStrictOrNull()
+    actual fun saveEnabled(enabled: Boolean) { preferences.put("saveEnabled", enabled.toString()) }
+    actual fun loadApiKey(): String? = preferences.get("loadApiKey", null)
+    actual fun saveApiKey(apiKey: String) { preferences.put("saveApiKey", apiKey) }
+    actual fun loadLanguage(): String? = preferences.get("loadLanguage", null)
+    actual fun saveLanguage(language: String) { preferences.put("saveLanguage", language) }
+    actual fun loadUseTrailers(): Boolean? = preferences.get("loadUseTrailers", null)?.toBooleanStrictOrNull()
+    actual fun saveUseTrailers(enabled: Boolean) { preferences.put("saveUseTrailers", enabled.toString()) }
+    actual fun loadUseArtwork(): Boolean? = preferences.get("loadUseArtwork", null)?.toBooleanStrictOrNull()
+    actual fun saveUseArtwork(enabled: Boolean) { preferences.put("saveUseArtwork", enabled.toString()) }
+    actual fun loadUseBasicInfo(): Boolean? = preferences.get("loadUseBasicInfo", null)?.toBooleanStrictOrNull()
+    actual fun saveUseBasicInfo(enabled: Boolean) { preferences.put("saveUseBasicInfo", enabled.toString()) }
+    actual fun loadUseDetails(): Boolean? = preferences.get("loadUseDetails", null)?.toBooleanStrictOrNull()
+    actual fun saveUseDetails(enabled: Boolean) { preferences.put("saveUseDetails", enabled.toString()) }
+    actual fun loadUseCredits(): Boolean? = preferences.get("loadUseCredits", null)?.toBooleanStrictOrNull()
+    actual fun saveUseCredits(enabled: Boolean) { preferences.put("saveUseCredits", enabled.toString()) }
+    actual fun loadUseProductions(): Boolean? = preferences.get("loadUseProductions", null)?.toBooleanStrictOrNull()
+    actual fun saveUseProductions(enabled: Boolean) { preferences.put("saveUseProductions", enabled.toString()) }
+    actual fun loadUseNetworks(): Boolean? = preferences.get("loadUseNetworks", null)?.toBooleanStrictOrNull()
+    actual fun saveUseNetworks(enabled: Boolean) { preferences.put("saveUseNetworks", enabled.toString()) }
+    actual fun loadUseEpisodes(): Boolean? = preferences.get("loadUseEpisodes", null)?.toBooleanStrictOrNull()
+    actual fun saveUseEpisodes(enabled: Boolean) { preferences.put("saveUseEpisodes", enabled.toString()) }
+    actual fun loadUseSeasonPosters(): Boolean? = preferences.get("loadUseSeasonPosters", null)?.toBooleanStrictOrNull()
+    actual fun saveUseSeasonPosters(enabled: Boolean) { preferences.put("saveUseSeasonPosters", enabled.toString()) }
+    actual fun loadUseMoreLikeThis(): Boolean? = preferences.get("loadUseMoreLikeThis", null)?.toBooleanStrictOrNull()
+    actual fun saveUseMoreLikeThis(enabled: Boolean) { preferences.put("saveUseMoreLikeThis", enabled.toString()) }
+    actual fun loadUseCollections(): Boolean? = preferences.get("loadUseCollections", null)?.toBooleanStrictOrNull()
+    actual fun saveUseCollections(enabled: Boolean) { preferences.put("saveUseCollections", enabled.toString()) }
     actual fun exportToSyncPayload(): kotlinx.serialization.json.JsonObject = kotlinx.serialization.json.JsonObject(emptyMap())
     actual fun replaceFromSyncPayload(payload: JsonObject) { }
 }
