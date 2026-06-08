@@ -207,6 +207,8 @@ kotlin {
         }
     }
     
+    jvm("desktop")
+    
     val iosTargets = listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -242,6 +244,15 @@ kotlin {
     }
     
     sourceSets {
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.currentOs)
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.8.0")
+                implementation("uk.co.caprica:vlcj:4.8.2")
+                implementation("uk.co.caprica:vlcj-natives:4.8.1")
+                implementation(libs.ktor.client.cio)
+            }
+        }
         val commonMain by getting {
             kotlin.srcDir(generatedRuntimeConfigDir)
         }
@@ -393,3 +404,15 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
+
+compose.desktop {
+    application {
+        mainClass = "MainKt"
+        nativeDistributions {
+            targetFormats(TargetFormat.Exe)
+            packageName = "Nuvio"
+            packageVersion = releaseAppVersionName
+        }
+    }
+}
+
