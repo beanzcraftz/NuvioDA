@@ -14,7 +14,7 @@ internal actual object ThemeSettingsStorage {
     actual fun loadSelectedAppLanguage(): String? = null
     actual fun saveSelectedAppLanguage(languageCode: String) { }
     actual fun applySelectedAppLanguage(languageCode: String) { }
-    actual fun exportToSyncPayload(): JsonObject = TODO("Stub")
+    actual fun exportToSyncPayload(): kotlinx.serialization.json.JsonObject = kotlinx.serialization.json.JsonObject(emptyMap())
     actual fun replaceFromSyncPayload(payload: JsonObject) { }
 }
 

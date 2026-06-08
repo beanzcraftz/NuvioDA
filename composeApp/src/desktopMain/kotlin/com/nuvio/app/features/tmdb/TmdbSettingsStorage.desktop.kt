@@ -33,7 +33,7 @@ internal actual object TmdbSettingsStorage {
     actual fun saveUseMoreLikeThis(enabled: Boolean) { }
     actual fun loadUseCollections(): Boolean? = null
     actual fun saveUseCollections(enabled: Boolean) { }
-    actual fun exportToSyncPayload(): JsonObject = TODO("Stub")
+    actual fun exportToSyncPayload(): kotlinx.serialization.json.JsonObject = kotlinx.serialization.json.JsonObject(emptyMap())
     actual fun replaceFromSyncPayload(payload: JsonObject) { }
 }
 

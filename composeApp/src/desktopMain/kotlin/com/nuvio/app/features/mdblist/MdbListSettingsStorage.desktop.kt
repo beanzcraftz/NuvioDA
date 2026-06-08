@@ -23,7 +23,7 @@ internal actual object MdbListSettingsStorage {
     actual fun saveUseLetterboxd(enabled: Boolean) { }
     actual fun loadUseAudience(): Boolean? = null
     actual fun saveUseAudience(enabled: Boolean) { }
-    actual fun exportToSyncPayload(): JsonObject = TODO("Stub")
+    actual fun exportToSyncPayload(): kotlinx.serialization.json.JsonObject = kotlinx.serialization.json.JsonObject(emptyMap())
     actual fun replaceFromSyncPayload(payload: JsonObject) { }
 }
 

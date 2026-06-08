@@ -128,7 +128,7 @@ internal actual object PlayerSettingsStorage {
     actual fun saveIosSaturation(value: Int) { }
     actual fun loadIosGamma(): Int? = null
     actual fun saveIosGamma(value: Int) { }
-    actual fun exportToSyncPayload(): JsonObject = TODO("Stub")
+    actual fun exportToSyncPayload(): kotlinx.serialization.json.JsonObject = kotlinx.serialization.json.JsonObject(emptyMap())
     actual fun replaceFromSyncPayload(payload: JsonObject) { }
 }
 

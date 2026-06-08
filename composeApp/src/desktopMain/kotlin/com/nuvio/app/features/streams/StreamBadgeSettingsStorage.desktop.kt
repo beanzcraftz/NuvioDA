@@ -13,7 +13,7 @@ internal actual object StreamBadgeSettingsStorage {
     actual fun saveStreamBadgePlacement(placement: String) { }
     actual fun loadLegacyDebridStreamBadgeRules(): String? = null
     actual fun clearLegacyDebridStreamBadgeRules() { }
-    actual fun exportToSyncPayload(): JsonObject = TODO("Stub")
+    actual fun exportToSyncPayload(): kotlinx.serialization.json.JsonObject = kotlinx.serialization.json.JsonObject(emptyMap())
     actual fun replaceFromSyncPayload(payload: JsonObject) { }
 }
 

@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 
 internal actual object AppForegroundMonitor {
-    actual fun events(): Flow<Unit> = TODO("Stub")
+    actual fun events(): kotlinx.coroutines.flow.Flow<Unit> = kotlinx.coroutines.flow.emptyFlow()
 }
 
